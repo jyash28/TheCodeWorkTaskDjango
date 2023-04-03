@@ -1,0 +1,43 @@
+
+{% extends 'users/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% load socialaccount %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <div class="container d-flex justify-center align-center" style="margin-top: 30px;">
+    <form action="" class='w-80 d-flex flex-col gap-4' method="POST">
+      {% csrf_token %}
+      <fieldset class="form-group">
+          <legend class="mb-4 decoration-black text-3xl font-bold text-center">Sign In Now</legend>
+          {{ form|crispy }}
+      </fieldset>
+      {% comment %} <div class="form-group w-100 d-flex justify-center align-center" id="signup-button"> {% endcomment %}
+          <button class="rounded-md w-80 h-10 mx-auto bg-sky-300 text-white text-base font-bold cursor-pointer">Sign In</button>
+      {% comment %} </div> {% endcomment %}
+      <div class="form-group landing-4 d-flex justify-center align-center">
+          <small class="text-muted ml-3" >Don't have an account yet? <a href="{% url 'register' %}">Sign Up Today</a></small>
+      </div>
+    </form>
+    </div>
+<div class='w-100 d-flex justify-center items-center mt-1'>
+    <a class='text-center d-flex justify-center items-center w-80 h-10 rounded-full border border-indigo-600' href="{% provider_login_url 'google' %}"><img src={% static '../static/googleIcon.png'%} class='w-5 h-5 mr-4' /> Sign up with</a>
+
+</div>
+{% endblock %}</title>
+{% comment %} <div class="grid gap-5">
+    <h3 class="text-xl font-bold">Login Page</h3>
+    <input type="email" v-bind="name" name="email" id="email"
+      class="rounded-md w-80 h-10 pl-5  mx-auto border-solid border-2 border-sky-300 cursor-pointer  placeholder:text-gray-400 sm:text-sm sm:leading-6"
+      placeholder="Email">
+    <input type="password" v-bind="password" name="password" id="password"
+      class="rounded-md w-80 h-10 pl-5  mx-auto border-solid border-2 border-sky-300 cursor-pointer  placeholder:text-gray-400 sm:text-sm sm:leading-6"
+      placeholder="password">
+    <button
+      class="rounded-md w-80 h-10 mx-auto bg-sky-300 text-white text-base font-bold cursor-pointer  placeholder:text-gray-400 sm:text-sm sm:leading-6">Submit</button>
+      <span class="text-base font-bold underline underline-offset-1">Login With</span>
+      <span class="flex justify-center cursor-pointer"><img :src="googleIcon" class=" w-7"/></span>
+   <p>Not a member?
+        <router-link class="cursor-pointer" to="/sign-up">SignUp</router-link>
+    </p>
+  </div> {% endcomment %}
